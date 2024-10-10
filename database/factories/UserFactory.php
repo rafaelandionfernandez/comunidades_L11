@@ -24,9 +24,14 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'doi' => fake()->unique()->dni(),
+            'name' => fake()->firstname(),
+            'apellidos' => fake()->lastname,
+            'fechalta' => fake()->dateTimeBetween('-10 years', 'now'),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            // la password está hardcodeada en la migración de la tabla users a 'secretos'.
+//            'password' => '$2y$10$QlfN7CbALaYJSTPmQ69CdeW5uFOd3pcm.Gke78.pypt.zQljlso/2', // password hardcoded to 'secretos'
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];

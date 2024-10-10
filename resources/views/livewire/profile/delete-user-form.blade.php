@@ -1,3 +1,4 @@
+
 <?php
 
 use App\Livewire\Actions\Logout;
@@ -18,7 +19,6 @@ new class extends Component
         ]);
 
         tap(Auth::user(), $logout(...))->delete();
-
         $this->redirect('/', navigate: true);
     }
 }; ?>

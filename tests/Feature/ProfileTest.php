@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Database\Seeders\PaisSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Volt\Volt;
 use Tests\TestCase;
@@ -10,6 +11,17 @@ use Tests\TestCase;
 class ProfileTest extends TestCase
 {
     use RefreshDatabase;
+
+    // protected $seed = true;  // Ejecuta los seeders
+
+    protected function setup(): void
+    {
+        parent::setUp();
+
+        $this->seed([
+            PaisSeeder::class,
+        ]);
+    }
 
     public function test_profile_page_is_displayed(): void
     {
@@ -80,6 +92,7 @@ class ProfileTest extends TestCase
 
         $this->assertGuest();
         $this->assertNull($user->fresh());
+
     }
 
     public function test_correct_password_must_be_provided_to_delete_account(): void

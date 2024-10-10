@@ -3,6 +3,7 @@
 namespace Tests\Feature\Auth;
 
 use App\Models\User;
+use Database\Seeders\PaisSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Volt\Volt;
@@ -11,6 +12,18 @@ use Tests\TestCase;
 class PasswordUpdateTest extends TestCase
 {
     use RefreshDatabase;
+
+    // protected $seed = true;  // Ejecuta los seeders
+
+    protected function setup(): void
+    {
+        parent::setUp();
+
+        $this->seed([
+            PaisSeeder::class,
+        ]);
+
+    }
 
     public function test_password_can_be_updated(): void
     {

@@ -19,6 +19,34 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            /* campos añadidos */
+            $table->string('language', 3)->default(env('APP_LOCALE','en'))->comment('Idioma preferente del usuario');
+            $table->string('apellidos', 40)->nullable();
+            $table->date('fechalta')->default(now());      //   ¿Es necesaria?
+            $table->text('profile_photo_path')->nullable();
+            $table->integer('MaxFreeCommunities')->default(env('APP_MAX_FREE_COMMUNITIES', 0))->comment('Número máximo de comunidades gratuitas que un usuario puede crear');
+            $table->softDeletes();
+
+
+            /*
+             * Al integrar usuarios y propietarios en la misma tabla estos campos
+             * deben ser opcionales
+             *
+             */
+            $table->enum('tratamiento', ['Sr.', 'Sra.'])->default('Sr.')->nullable();
+            $table->enum('tipo', ['física', 'jurídica'])->nullable()->comment('Tipo de persona');
+            $table->string('doi', 12)->nullable()->comment('Doc. Oficial de Identidad: passp, dni, nie, cif');
+            $table->string('telefono1')->nullable();
+            $table->string('telefono2')->nullable();
+            // Dirección postal
+            $table->string('direccion', 35)->nullable()->comment('Dirección a efectos de notificaciones; incluye, si hubiese, piso, escalera, etc.');
+            $table->char('cp', 5)->nullable()->comment('Código postal');
+            $table->string('municipio', 25)->nullable()->comment('Comunidad autónoma y provincia se determina por el cp. Activar después de cp, ');
+            $table->string('localidad', 25)->nullable()->comment('Activar después de introducido c.p.');
+            $table->char('pais', 3)->default('ESP');
+            $table->text('comentario')->nullable();
+            $table->foreign('pais')->references('codigoISO3')->on('paises');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
