@@ -1,11 +1,11 @@
 # Administración de comunidades
 ## Requisitos técnicos
-* PHP 8.1+
-* Laravel 9.7+
-* Jetstream con livewire, exclusivamente para autenticación
+* PHP 8.3+
+* Laravel 11.27+
+* Breeze con livewire, para autenticación
 * Bootstrap 4.6+
 * Plantilla AdminLTE 3.1+
-* SGBD PostgreSQL 12.0+
+* SGBD PostgreSQL 16.0+
 
 ## Formación inicial
 * [Visión general](https://www.youtube.com/watch?v=LS-pCKjBCUo)
