@@ -7,7 +7,12 @@ use App\Http\Controllers\Api\{
     PropiedadController};
 use Illuminate\Http\Request;
 use App\Http\Middleware\ValidateJsonApiDocument;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+
+//DB::listen(function($query){
+//    dump($query->sql);
+//});
 
 /*
   |--------------------------------------------------------------------------
