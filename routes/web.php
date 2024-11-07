@@ -38,9 +38,13 @@ Route::get('lang/{locale?}', function ($locale = 'en') {
     }
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//    Route::get('/', function () {
+//        return view('AdminLTE.dist.pages.index');
+//    });
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
 Route::get('set_language/{lang}', function ($language) {
     if (array_key_exists($language, config('languages'))) {
@@ -76,18 +80,18 @@ Route::middleware('auth')->resource('documentos', DocumentoController::class);
 
 
 // Código copiado del web.php original después de instalar breeze.
-Route::view('/', 'welcome');
-
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-
-require __DIR__.'/auth.php';
-// fin código de web.php original
+//Route::view('/', 'welcome');
+//
+//Route::view('dashboard', 'dashboard')
+//    ->middleware(['auth', 'verified'])
+//    ->name('dashboard');
+//
+//Route::view('profile', 'profile')
+//    ->middleware(['auth'])
+//    ->name('profile');
+//
+//require __DIR__.'/auth.php';
+//// fin código de web.php original
 
 
 
